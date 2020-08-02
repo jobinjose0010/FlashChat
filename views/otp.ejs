@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashChat | Verify</title>
+    <link rel="icon" href="images/flashchat.png" sizes="16x16">
+
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .container{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-40%);
+            max-width:50vw; 
+            width: 100%;        
+        }
+        h1{
+            font-size: 50px;
+            font-family: Poor Richard;
+            color: rgb(0, 103, 151);
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+            max-width:30vw;
+            width: 100%;
+        }
+        .text{
+            margin-top: 20px;
+            width: 50%;
+            height: 23px;
+            border-radius: 10px;
+            border: 1.2px solid rgb(201, 201, 201);
+            padding: 5px 20px;
+            outline: none;
+        }
+
+        #submit{
+            margin-top: 40px;
+            width: 10vw;
+            height: 40px;
+            background:gray;
+            font-size: 20px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        p{
+            font-size: 12px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            text-align: center;
+            color: gray;
+        }
+        @media screen and (max-width:800px){
+            form{
+                max-width:50vw;
+                width: 100%;
+            }
+            #submit{
+                width: 18vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img style="width:60px; height: 90px;" src="images/flashchat.png" alt="">
+        <form action="/verify/<%= email %>" method="POST">
+            <p>An OTP is sent to <%= email %>,<br>Check your Inbox!</p>
+            <input class="text" type="text" name="OTP" placeholder="Enter your OTP" required>
+            <input id="submit" type="submit" value="Verify">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashChat</title>
+    <link rel="icon" href="images/flashchat.png" sizes="16x16">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-40%);
+        }
+        .buttons{
+            display: flex;
+            margin-top: 40px;
+        }
+        .buttons a{
+            text-decoration: none;
+            margin: 30px;
+        }
+        .btn{
+            width: 300px;
+            height: 50px;
+            background:linear-gradient(75deg, #004CFF, #00EEFF);
+            font-size: 20px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+        }
+        .logo img{
+                width: 300px;
+                height: 150px;
+        }
+        @media screen and (max-width:900px){
+            .logo img{
+                width: 200px;
+                height: 100px;
+            }
+            .buttons{
+                flex-direction: column;
+                align-items: center;
+                margin-top: 0px;
+            }
+            .buttons a:nth-child(1){
+                margin-top: 50px;
+            }
+            .buttons a:nth-child(2){
+                margin-top: 5px;
+            }
+            .btn{
+                width: 200px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+            <div class="logo">
+                <img src="/images/flashchat-logo.png" alt="">
+            </div>
+            <div class="buttons">
+                <a href="/register"><div class="btn">Register</div></a>
+                <a href="/login"><div class="btn">Login</div></a>
+            </div>
+    </div>
+</body>
+</html>

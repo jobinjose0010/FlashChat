@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashChat</title>
+    <link rel="icon" href="/images/flashchat.png" sizes="16x16">
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%,-40%);
+        }
+        .buttons{
+            display: flex;
+            margin-top: 40px;
+        }
+        .buttons a{
+            text-decoration: none;
+            margin: 30px;
+        }
+        .btn{
+            width: 300px;
+            height: 50px;
+            background:linear-gradient(75deg, #004CFF, #00EEFF);
+            font-size: 20px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+        }
+        .logo{
+            display: flex;
+            flex-direction:column;
+            align-items: center;
+        }
+        .logo img{
+                width: 300px;
+                height: 150px;
+        }
+
+        .hamburger{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            right: 30px;
+            top: 20px;
+            cursor: pointer;
+            z-index: 10000000;
+        }
+        .bar{
+            width: 35px;
+            height: 5px;
+            border-radius: 50px;
+            background: linear-gradient(75deg, #004CFF, #00EEFF);
+            margin-bottom: 3px;
+        }
+        .main{
+            height: 100vh;
+        }
+        .navmenu{
+            position: fixed;
+            right: -505px;
+            top: 0;
+            width: 400px;
+            bottom: 0;
+            background-color: #F1F3F6;
+            box-shadow: -5px 5px 6px rgb(189, 188, 188);
+            border-radius: 20px 0 0 20px;
+            z-index: 1000000;
+            transition: .2s ease-in;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            padding-left: 50px;
+            padding-top: 60px;
+            padding-right: 50px;
+        }
+        .open .navmenu{
+            right:0;
+        }
+        .open .user{
+            animation:visible 2s 1 ;
+        }
+
+        .open .chatroom{
+            animation:visible 2s 1 ;
+        }
+
+
+        .user{
+            display: flex;
+            justify-content: start;
+            align-items:initial;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            background-color: white;
+        }
+        .user-img{
+            margin-right: 30px;
+            box-sizing: content-box;
+        }
+        .user-img img{
+            width: 50px;
+        }
+        .chatroom{
+            display: flex;
+            flex-direction: column;
+            background-color: #F1F3F6;
+            margin-top: 30px;
+            margin-bottom:20px;
+            box-shadow: -7px -7px 7px white,7px 7px 7px rgb(94, 94, 94);
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 10px 20px;
+        }
+        
+        .container-room{
+            width: 100%;
+            overflow-x: hidden;
+            height: 100%;
+            max-height: 65vh;
+            background-color: #F1F3F6;
+        }
+
+        .room-elements{
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            height:40px;
+            background-color: white;
+            margin-bottom: 20px;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .room-elements img{
+            width: 40px;
+            height:38px;
+            margin: 10px 20px;
+        }
+
+        @media screen and (max-width:900px){
+            .logo img{
+                width: 200px;
+                height: 100px;
+            }
+            .buttons{
+                flex-direction: column;
+                align-items: center;
+                margin-top: 0px;
+            }
+            .buttons a:nth-child(1){
+                margin-top: 50px;
+            }
+            .buttons a:nth-child(2){
+                margin-top: 5px;
+            }
+            .btn{
+                width: 200px;
+                height: 40px;
+            }
+            .navmenu{
+            right: -80vw;
+            width: 50vw;
+            }
+        }
+
+        @keyframes visible{
+            from{opacity: 0;}
+            to{opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+    <nav class="main" id="main">
+        <div class="hamburger" id="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="navmenu" id="navmenu">
+            <div class="user">
+                <div class="user-img">
+                    <% if(data.gender == "male"){ %>
+                        <img src="/images/maleuser.png" alt="">
+                    <% }else{ %>
+                        <img src="/images/femaleuser.png" alt="">
+                    <% } %>
+                </div>
+                <div class="wish" style="font-size: 15px;line-height: 2px;">
+                    <h3>Hello, <%= data.fname %></h3>
+                    <h5><%= data.username %></h5>
+                </div>
+            </div>
+            <div class="chatroom">
+                <h1 style="text-decoration: underline;text-align: center;">ChatRooms</h1>
+                <div class="container-room">
+                    <div class="room-elements">
+                        <img src="/images/groupchat-icon.png" alt="">
+                        <h1 style="text-align: center;">Coding</h1>
+                    </div>
+                    <div class="room-elements">
+                        <h1>Coding</h1>
+                    </div>
+                    <div class="room-elements">
+                        <h1>Coding</h1>
+                    </div>
+                    <div class="room-elements">
+                        <h1>Coding</h1>
+                    </div>
+                    <div class="room-elements">
+                        <h1>Coding</h1>
+                    </div>
+                    <div class="room-elements">
+                        <h1>Coding</h1>
+                    </div>
+                    <div class="room-elements">
+                        <h1>Coding</h1>
+                    </div>
+                    <div class="room-elements">
+                        <h1>Coding</h1>
+                    </div>
+                    <div class="room-elements">
+                        <h1>Coding</h1>
+                    </div>
+                    <div class="room-elements">
+                        <h1>Coding</h1>
+                    </div>
+                    <div class="room-elements">
+                        <h1>Coding</h1>
+                    </div>
+                    <div class="room-elements">
+                        <h1>Coding</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+            <div class="logo">
+                <img src="/images/flashchat-logo.png" alt="">
+            </div>
+            <div class="buttons">
+                <a href="/create"><div class="btn">Create room</div></a>
+                <a href="/join"><div class="btn">Join room</div></a>
+            </div>
+    </div>
+    <script>
+        var selector = (element)=>{
+            return document.getElementById(element);
+        }
+        const hamburger = selector('hamburger');
+        const main = selector('main');
+        hamburger.addEventListener('click',()=>{
+            main.classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
